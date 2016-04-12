@@ -1,0 +1,228 @@
+#:import RiseInTransition kivy.uix.screenmanager.RiseInTransition
+ScreenManagement:
+    transition:RiseInTransition()
+    MainScreen:
+    AnotherScreen:
+	SecondScreen:
+    ThirdScreen:
+    FourthScreen:
+    FifthScreen:
+    WinScreen:
+    Score1:
+
+
+<MainScreen>:
+    name: 'main'
+    BoxLayout:
+        orientation:'horizontal'
+        padding:10
+        canvas.before:
+            Rectangle:
+                size:self.size
+                source:'1wall.jpg'
+
+        Button:
+            on_release: app.root.current = 'other'
+            text: 'PRESS TO BEGIN'
+            bold:True
+            font_size: 15
+            size_hint:0.4,0.3
+            color:0,0,0,1
+            background_normal:'5.png'
+            background_down:'5.png'
+        Button:
+            on_release:App.get_running_app().stop()
+            text:'EXIT'
+            font_size:15
+            size_hint:0.25,0.3
+            color:0,0,0,1
+            bold:True
+            background_normal:'5.png'
+            background_down:'5.png'
+        Button:
+            on_release:root.go_there()
+            text:'LATEST UPDATES'
+            font_size:14
+            size_hint:0.25,0.3
+            color:0,0,0,1
+            bold:True
+            background_normal:'5.png'
+            background_down:'5.png'    
+
+<AnotherScreen>:
+    name: 'other'
+    BoxLayout
+        orientation:'vertical'
+        Label:
+            text: 'ENTER YOUR NAME AND THEN PROCEED TO BEGIN'
+            italic:True
+            bold:True
+            font_size: 20
+            size:10,10
+        TextInput:
+            font_size:20
+            size:10,10
+            
+        Button:
+            text: 'PROCEED'
+            italic:True
+            font_size: 30
+            size:10,10
+            on_release:app.root.current="third"    
+
+<SecondScreen>:
+    name:"third"
+    BoxLayout:
+        orientation:"vertical"
+
+        Label:
+            text:"In the beginning of the book, 3 men of the Night's Watch were sent to \n track a band of wildling raiders. Who led the group?"
+            font_size:15
+            split_str:'rr'
+        Button:
+            text:'Ser Selmy Barristan'
+            size:30,30
+            on_release:app.root.current="s"
+            
+        Button:
+            text:"John Snow"
+            size:30,30
+            on_release:app.root.current="3"
+        Button:
+            text:'Ser Waymar Royce'
+            size:30,30
+            on_release:app.root.current="3"
+        Button:
+            text:' Benjen Stark'
+            size:30,30
+            on_release:app.root.current="3"
+
+<ThirdScreen>:
+    name:'3'
+    BoxLayout:
+        orientation:"vertical"
+
+        Label:
+            text:"In the book, 'A Game of Thrones' it is said that Ser Ilyn Payne\nhad his tongue ripped out with hot pincers. Who ordered it to happen?"
+            font_size:20
+        Button:
+            text:'Ser Jaime Lannister'
+            size:30,30
+            on_release:app.root.current="s"
+        Button:
+            text:"Robert Baratheon"
+            size:30,30
+            on_release:app.root.current="4"
+        Button:
+            text:'Tywin Lannister'
+            size:30,30
+            on_release:app.root.current="4"
+        Button:
+            text:'Aerys Targaryen'
+            size:30,30
+            on_release:app.root.current="4"
+
+<FourthScreen>:
+    name:'4'
+    BoxLayout:
+        orientation:"vertical"
+
+        Label:
+            text:"Tyrion gives a reason for wanting to travel with the new recruits\nof the Night's Watch and see the Wall. What was his reason?"
+            font_size:20
+        Button:
+            text:'To stand on top of the Wall\nand piss off the edge of the world'
+            size:30,30
+            on_release:app.root.current="s"  
+        Button:
+            text:"To take\nthe black"
+            size:30,30
+            on_release:app.root.current="5"
+        Button:
+            text:'To visit old friends\nof his in the Nights Watch'
+            size:30,30
+            on_release:app.root.current="5"
+        Button:
+            text:'To get away from\nhis sister Cersei'
+            size:30,30
+            on_release:app.root.current="5"
+
+
+
+<FifthScreen>:
+    name:'5'
+    BoxLayout:
+        orientation:"vertical"
+
+        Label:
+            text:"In the book, 'A Game of Thrones' it is said that Ser Ilyn Payne\nhad his tongue ripped out with hot pincers. Who ordered it to happen?"
+            font_size:20
+        Button:
+            text:'Ser Jaime Lannister'
+            size:30,30
+            on_release:app.root.current="s"
+            
+        Button:
+            text:"Robert Baratheon"
+            size:30,30
+            on_release:app.root.current="6"
+        Button:
+            text:'Tywin Lannister'
+            size:30,30
+            on_release:app.root.current="6"
+        Button:
+            text:'Aerys Targaryen'
+            size:30,30
+            on_release:app.root.current="6"
+
+
+<WinScreen>:
+    name:'6'
+    lbl1:lbl1
+    BoxLayout:
+        orientation:'vertical'
+        VideoPlayer:
+            source:"1.3gp"
+            size_hint:1,1
+            state:"play"
+        Label:
+            id:lbl1
+            text:'YOU WON AND HERES A GIFT'
+        Button:
+            text:'FOR EXIT'
+            size:30,30
+            on_press:App.get_running_app().stop()
+
+
+<ImageButton@Button>: 
+    source: None
+    Image: 
+        source: root.source 
+        pos: root.pos 
+        size: root.size
+
+<Score1>:
+    name:'s'
+    l1:l1
+    BoxLayout:
+        orientation:'vertical'
+        Button:
+            text:'Press'
+            on_release:root.do_score()
+            on_release:app.root.current=str(root.I)
+        Label:
+            id:l1
+            text:'YOUR SCORE IS'
+            
+
+
+
+    
+            
+
+
+
+    
+
+            
+
